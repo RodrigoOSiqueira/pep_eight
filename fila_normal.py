@@ -6,7 +6,7 @@ from constantes import CODIGO_NORMAL
 class FilaNormal(FilaBase):
 	def gera_senha_atual(self):
 		self.senha_atual = (
-            f'NM{self.codigo}'
+            f'{CODIGO_NORMAL}{self.codigo}'
         )
 
 	def chama_cliente(self, caixa):
