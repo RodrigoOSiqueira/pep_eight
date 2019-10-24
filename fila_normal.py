@@ -1,5 +1,7 @@
 from base import FilaBase
 
+from constantes import CODIGO_NORMAL
+
 
 class FilaNormal(FilaBase):
 	def gera_senha_atual(self):
