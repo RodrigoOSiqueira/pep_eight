@@ -6,7 +6,7 @@ from constantes import CODIGO_PRIORITARIO
 class FilaPrioritaria(FilaBase):
 	def gera_senha_atual(self):
 		self.senha_atual = (
-            f'PR{self.codigo}'
+            f'{CODIGO_PRIORITARIO}{self.codigo}'
         )
 
 	def chama_cliente(self, caixa):
@@ -22,11 +22,7 @@ class FilaPrioritaria(FilaBase):
 
 		return display
 
-	def estatistica_detalhada(self, agencia, dia):
-		resposta = {}
-        resposta['dia'] = dia
-        resposta['agencia'] = agencia
-        resposta['clientes atendidos'] = len(self.clientes_atendidos)
-        resposta['clientes não atendidos'] = len(self.fila)
+	def estatistica(self, dia, agencia, retorna_estatistica):
+		estatistica = retorna_estatistica(agencia, dia)
 
-        return resposta, self.clientes_atendidos
+		return estatistica.roda_estatistica(self.clientes_atendidos)
